@@ -13,12 +13,15 @@ import android.view.ViewGroup;
 import com.example.hypermarket.R;
 import com.example.hypermarket.adapter.ProductAdapter;
 import com.example.hypermarket.model.Product;
+import com.example.hypermarket.repository.ProductRepository;
+import com.example.hypermarket.retrofit.model.CommerceResponse;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductsFragment extends Fragment {
     private RecyclerView mRecyclerView;
+    private ProductRepository mProductRepository;
     public ProductsFragment() {
         // Required empty public constructor
     }
@@ -57,10 +60,13 @@ public class ProductsFragment extends Fragment {
 
     private void setupAdapter() {
         List<Product> products = new ArrayList<>();
-        Product product = new Product();
-        product.setName("Cake");
-        product.setPrice("1000");
-        for (int i = 0; i < 100; i++) {
+        List<CommerceResponse> responses = new ArrayList<>();
+        mProductRepository = new ProductRepository();
+        responses = mProductRepository.fetchAllItems();
+        for (int i = 0; i < responses.size(); i++) {
+            Product product = new Product();
+            product.setPrice(responses.get(i).getPrice());
+            product.setName(responses.get(i).getName());
             products.add(product);
         }
         ProductAdapter adapter = new ProductAdapter(products);
