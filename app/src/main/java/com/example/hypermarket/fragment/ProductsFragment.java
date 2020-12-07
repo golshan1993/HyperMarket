@@ -22,6 +22,7 @@ import java.util.List;
 public class ProductsFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private ProductRepository mProductRepository;
+    private List<Product> mItems = new ArrayList<>();
     public ProductsFragment() {
         // Required empty public constructor
     }
@@ -36,6 +37,14 @@ public class ProductsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mProductRepository = new ProductRepository();
+        mProductRepository.fetchItemsAsync(new ProductRepository.Callbacks() {
+            @Override
+            public void onItemResponse(List<Product> items) {
+                mItems = items;
+                setupAdapter(items);
+            }
+        });
     }
 
     @Override
@@ -45,8 +54,7 @@ public class ProductsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_products, container, false);
         findViews(view);
         initViews();
-        setupAdapter();
-
+        setupAdapter(mItems);
         return view;
     }
 
@@ -58,18 +66,8 @@ public class ProductsFragment extends Fragment {
         mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
     }
 
-    private void setupAdapter() {
-        List<Product> products = new ArrayList<>();
-        List<CommerceResponse> responses = new ArrayList<>();
-        mProductRepository = new ProductRepository();
-        responses = mProductRepository.fetchAllItems();
-        for (int i = 0; i < responses.size(); i++) {
-            Product product = new Product();
-            product.setPrice(responses.get(i).getPrice());
-            product.setName(responses.get(i).getName());
-            products.add(product);
-        }
-        ProductAdapter adapter = new ProductAdapter(products);
+    private void setupAdapter(List<Product> items) {
+        ProductAdapter adapter = new ProductAdapter(items);
         mRecyclerView.setAdapter(adapter);
     }
 }
