@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.hypermarket.model.Product;
 import com.example.hypermarket.viewholder.ProductViewHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {

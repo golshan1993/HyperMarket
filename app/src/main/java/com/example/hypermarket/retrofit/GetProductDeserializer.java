@@ -16,8 +16,7 @@ public class GetProductDeserializer implements JsonDeserializer<List<Product>> {
     @Override
     public List<Product> deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         List<Product> items = new ArrayList<>();
-        JsonObject bodyObject = json.getAsJsonObject();
-        JsonArray productArray = bodyObject.getAsJsonArray();
+        JsonArray productArray = json.getAsJsonArray();
 
         for (int i = 0; i < productArray.size(); i++) {
             JsonObject productObject = productArray.get(i).getAsJsonObject();

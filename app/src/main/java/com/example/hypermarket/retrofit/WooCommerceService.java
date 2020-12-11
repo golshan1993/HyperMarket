@@ -1,7 +1,6 @@
 package com.example.hypermarket.retrofit;
 
 import com.example.hypermarket.model.Product;
-import com.example.hypermarket.retrofit.model.CommerceResponse;
 
 import java.util.List;
 import java.util.Map;

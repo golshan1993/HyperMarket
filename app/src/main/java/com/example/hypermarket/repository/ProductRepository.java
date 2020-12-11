@@ -18,7 +18,7 @@ public class ProductRepository {
     private WooCommerceService mWooCommerceService;
     private static final String TAG = "ProductRepository";
     public ProductRepository(){
-        Retrofit retrofit = RetrofitInstance.create();
+        Retrofit retrofit = RetrofitInstance.getInstance().getRetrofit();
         mWooCommerceService = retrofit.create(WooCommerceService.class);
     }
 
@@ -95,6 +95,28 @@ public class ProductRepository {
                 callBacks.onItemResponse(items);
             }
 
+            @Override
+            public void onFailure(Call<List<Product>> call, Throwable t) {
+                Log.e(TAG, t.getMessage(), t);
+            }
+        });
+    }
+
+    public void fetchSearchItemsAsync(String query, Callbacks callbacks){
+        Call<List<Product>> call =
+                mWooCommerceService.listItems(NetworkParams.getSearchOptions(query));
+
+        call.enqueue(new Callback<List<Product>>() {
+
+            //this run on main thread
+            @Override
+            public void onResponse(Call<List<Product>> call, Response<List<Product>> response) {
+                List<Product> items = response.body();
+                //update adapter of recyclerview
+                callbacks.onItemResponse(items);
+            }
+
+            //this run on main thread
             @Override
             public void onFailure(Call<List<Product>> call, Throwable t) {
                 Log.e(TAG, t.getMessage(), t);
