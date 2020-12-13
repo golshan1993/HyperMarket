@@ -43,7 +43,12 @@ public class ProductsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mProductRepository = new ProductRepository();
-
+        mProductRepository.fetchItemsAsync(new ProductRepository.Callbacks() {
+            @Override
+            public void onItemResponse(List<Product> items) {
+                mItems = items;
+            }
+        });
         setHasOptionsMenu(true);
     }
 

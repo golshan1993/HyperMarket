@@ -9,7 +9,7 @@
         android:id="@+id/product_image"
         android:layout_width="match_parent"
         android:layout_height="109dp"
-        app:srcCompat="@android:drawable/ic_lock_lock" />
+        app:srcCompat="@drawable/ic_launcher_lock" />
 
     <TextView
         android:id="@+id/product_name"

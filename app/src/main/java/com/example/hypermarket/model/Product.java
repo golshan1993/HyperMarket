@@ -4,6 +4,24 @@ public class Product {
     private String name;
     private String price;
     private String mUrl;
+    private String [] mImageUrl;
+    private String [] mCategory;
+
+    public String[] getImageUrl() {
+        return mImageUrl;
+    }
+
+    public void setImageUrl(String[] imageUrl) {
+        mImageUrl = imageUrl;
+    }
+
+    public String[] getCategory() {
+        return mCategory;
+    }
+
+    public void setCategory(String[] category) {
+        mCategory = category;
+    }
 
     public String getName() {
         return name;
@@ -33,9 +51,12 @@ public class Product {
 
     }
 
-    public Product(String name, String price, String url) {
+    public Product(String name, String price, String url, String[] imageUrl, String[] category) {
         this.name = name;
         this.price = price;
         mUrl = url;
+        mImageUrl = imageUrl;
+        mCategory = category;
     }
+
 }

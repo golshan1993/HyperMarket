@@ -3,6 +3,7 @@ package com.example.hypermarket.adapter;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,7 +18,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
 
     private Context mContext;
     private List<Product> mItems;
-
+    private ImageView mImageViewItem;
     public List<Product> getItems() {
         return mItems;
     }
@@ -37,7 +38,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         Product current = mItems.get(position);
-        holder.bind(current.getName(), current.getPrice());
+        holder.bind(current);
     }
 
     @Override
