@@ -14,7 +14,9 @@ import java.util.List;
 
 public class GetProductDeserializer implements JsonDeserializer<List<Product>> {
     @Override
-    public List<Product> deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+    public List<Product> deserialize(JsonElement json,
+                                     Type typeOfT,
+                                     JsonDeserializationContext context) throws JsonParseException {
         List<Product> items = new ArrayList<>();
         JsonArray productArray = json.getAsJsonArray();
 
@@ -40,7 +42,7 @@ public class GetProductDeserializer implements JsonDeserializer<List<Product>> {
                 JsonObject categoryObject = productCategories.get(j).getAsJsonObject();
                 category[j] = categoryObject.get("name").getAsString();
             }
-            Product item = new Product(title, price, urlAddress, category, url);
+            Product item = new Product(title, price, urlAddress, url[0], category[0]);
             items.add(item);
         }
         return items;

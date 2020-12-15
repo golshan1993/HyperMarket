@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.hypermarket.model.Product;
-import com.example.hypermarket.viewholder.ProductViewHolder;
+import com.example.hypermarket.fragment.ProductsFragment.ProductViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +31,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
         mItems = items;
     }
 
+    /*public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return  ProductViewHolder.create(parent);
+    }*/
+
+    @NonNull
+    @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return ProductViewHolder.create(parent);
+        return  ProductViewHolder.create(parent);
     }
 
     @Override

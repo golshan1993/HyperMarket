@@ -1,21 +1,31 @@
 package com.example.hypermarket.fragment;
 
-import android.os.Bundle;
-
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import com.squareup.picasso.Picasso;
+
+
+import static androidx.core.content.ContextCompat.startActivity;
 import com.example.hypermarket.R;
+import com.example.hypermarket.activity.ProductDetailActivity;
 import com.example.hypermarket.adapter.ProductAdapter;
 import com.example.hypermarket.model.Product;
 import com.example.hypermarket.repository.ProductRepository;
@@ -24,10 +34,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductsFragment extends Fragment {
+
     private RecyclerView mRecyclerView;
     private ProductRepository mProductRepository;
     private List<Product> mItems = new ArrayList<>();
     private String query;
+    private static Context mContext;
     public ProductsFragment() {
         // Required empty public constructor
     }
@@ -47,9 +59,11 @@ public class ProductsFragment extends Fragment {
             @Override
             public void onItemResponse(List<Product> items) {
                 mItems = items;
+                setupAdapter(mItems);
             }
         });
         setHasOptionsMenu(true);
+        mContext = getContext();
     }
 
     @Override
@@ -59,7 +73,7 @@ public class ProductsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_products, container, false);
         findViews(view);
         initViews();
-        setupAdapter(mItems);
+        //setupAdapter(mItems);
         return view;
     }
 
@@ -93,6 +107,7 @@ public class ProductsFragment extends Fragment {
                     @Override
                     public void onItemResponse(List<Product> items) {
                         mItems = items;
+                        setupAdapter(mItems);
                     }
                 });
                 return true;
@@ -102,6 +117,7 @@ public class ProductsFragment extends Fragment {
                         @Override
                         public void onItemResponse(List<Product> items) {
                             mItems = items;
+                            setupAdapter(mItems);
                         }
                     });
                     return true;
@@ -111,6 +127,7 @@ public class ProductsFragment extends Fragment {
                     @Override
                     public void onItemResponse(List<Product> items) {
                         mItems = items;
+                        setupAdapter(mItems);
                     }
                 });
                 return true;
@@ -120,6 +137,7 @@ public class ProductsFragment extends Fragment {
                     @Override
                     public void onItemResponse(List<Product> items) {
                         mItems = items;
+                        setupAdapter(mItems);
                     }
                 });
                 return true;
@@ -142,4 +160,44 @@ public class ProductsFragment extends Fragment {
         ProductAdapter adapter = new ProductAdapter(items);
         mRecyclerView.setAdapter(adapter);
     }
+
+    public static class ProductViewHolder extends RecyclerView.ViewHolder {
+        private TextView productName;
+        private TextView productPrice;
+        private ImageView productImage;
+        private Button addToCart;
+
+        public static final String TAG = "tag";
+        private ProductViewHolder(View itemView) {
+            super(itemView);
+            productName = itemView.findViewById(R.id.product_name);
+            productPrice = itemView.findViewById(R.id.product_price);
+            productImage = (ImageView) itemView.findViewById(R.id.product_image);
+            addToCart = itemView.findViewById(R.id.btn_price);
+        }
+
+        public void bind(Product item) {
+            productName.setText(item.getName());
+            productPrice.setText(item.getPrice());
+            Picasso.get()
+                    .load(item.getImageUrl())
+                    .placeholder(R.mipmap.ic_launcher)
+                    .into(productImage);
+            addToCart.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Log.d(TAG, item.getUrl());
+                    Intent intent = ProductDetailActivity.newIntent(mContext, item.getUrl());
+                    mContext.startActivity(intent);
+                }
+            });
+        }
+
+        public static ProductViewHolder create(ViewGroup parent) {
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.product_item, parent, false);
+            return new ProductViewHolder(view);
+        }
+    }
+
 }
