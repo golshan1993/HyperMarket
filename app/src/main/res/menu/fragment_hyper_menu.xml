@@ -5,14 +5,16 @@
 
     <item
         android:id="@+id/item_recents"
-        android:title="Recents"
-        app:showAsAction="ifRoom" />
+        android:title="Recents" />
     <item
         android:id="@+id/item_best_popularity"
         android:title="Populars" />
     <item
         android:id="@+id/item_best_ratings"
         android:title="Best Ratings" />
+    <item
+        android:id="@+id/item_clear"
+        android:title="Clear" />
     <item
         android:id="@+id/menu_search_item"
         android:icon="@drawable/ic_search_black_24dp"

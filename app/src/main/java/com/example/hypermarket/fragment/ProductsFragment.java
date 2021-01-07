@@ -20,6 +20,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.hypermarket.utilities.QueryPreferences;
 import com.squareup.picasso.Picasso;
 
 
@@ -55,13 +57,25 @@ public class ProductsFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mProductRepository = new ProductRepository();
-        mProductRepository.fetchItemsAsync(new ProductRepository.Callbacks() {
-            @Override
-            public void onItemResponse(List<Product> items) {
-                mItems = items;
-                setupAdapter(mItems);
-            }
-        });
+        String query = QueryPreferences.getPrefSearchQuery(getContext());
+        if (query != null){
+            mProductRepository.fetchSearchItemsAsync(query, new ProductRepository.Callbacks() {
+                @Override
+                public void onItemResponse(List<Product> items) {
+                    mItems = items;
+                    setupAdapter(mItems);
+                }
+            });
+        }
+        else{
+            mProductRepository.fetchLatestItemsAsync(new ProductRepository.Callbacks() {
+                @Override
+                public void onItemResponse(List<Product> items) {
+                    mItems = items;
+                    setupAdapter(mItems);
+                }
+            });
+        }
         setHasOptionsMenu(true);
         mContext = getContext();
     }
@@ -87,14 +101,21 @@ public class ProductsFragment extends Fragment {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-                query = s;
+                mProductRepository.fetchSearchItemsAsync(s, new ProductRepository.Callbacks() {
+                    @Override
+                    public void onItemResponse(List<Product> items) {
+                        mItems = items;
+                        setupAdapter(mItems);
+                    }
+                });
+                QueryPreferences.setPrefSearchQuery(getContext(), s);
+                QueryPreferences.setIsSearch(getContext(), true);
                 return true;
             }
 
             @Override
-            public boolean onQueryTextChange(String s) {
-                query = s;
-                return true;
+            public boolean onQueryTextChange(String s){
+                return false;
             }
         });
     }
@@ -123,7 +144,7 @@ public class ProductsFragment extends Fragment {
                     return true;
 
             case R.id.item_recents:
-                mProductRepository.fetchItemsAsync(new ProductRepository.Callbacks() {
+                mProductRepository.fetchLatestItemsAsync(new ProductRepository.Callbacks() {
                     @Override
                     public void onItemResponse(List<Product> items) {
                         mItems = items;
@@ -131,9 +152,19 @@ public class ProductsFragment extends Fragment {
                     }
                 });
                 return true;
-            case R.id.menu_search_item:
+            /*case R.id.menu_search_item:
 
                 mProductRepository.fetchSearchItemsAsync(query, new ProductRepository.Callbacks() {
+                    @Override
+                    public void onItemResponse(List<Product> items) {
+                        mItems = items;
+                        setupAdapter(mItems);
+                    }
+                });
+                return true;*/
+            case R.id.item_clear:
+                QueryPreferences.setPrefSearchQuery(getContext(), null);
+                mProductRepository.fetchItemsAsync(new ProductRepository.Callbacks() {
                     @Override
                     public void onItemResponse(List<Product> items) {
                         mItems = items;
