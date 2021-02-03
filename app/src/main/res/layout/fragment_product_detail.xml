@@ -1,20 +1,264 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".fragment.ProductDetailFragment">
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:background="?attr/colorPrimary"/>
+    >
 
-    <WebView
-        android:id="@+id/web_view_product"
+    <data>
+        <import type="android.text.Html" />
+
+        <variable
+            name="productDetailsViewModel"
+            type="com.example.finalproject.viewModel.ProductDetailFragmentViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</LinearLayout>
+        android:layout_height="match_parent"
+        tools:context=".view.fragment.ProductDetailFragment">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/product_detail_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:textDirection="rtl"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <include
+                    android:id="@+id/shopping_cart_icon_detail_fragment"
+                    layout="@layout/action_basket_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/back_detail_imageview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_arrow_back_white_24dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+        <com.smarteist.autoimageslider.SliderView
+            android:id="@+id/imageSlider"
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/product_detail_toolbar"
+            app:sliderIndicatorGravity="center_horizontal|bottom"
+            app:sliderIndicatorMargin="15dp"
+            app:sliderIndicatorOrientation="horizontal"
+            app:sliderIndicatorPadding="3dp"
+            app:sliderIndicatorRadius="2dp"
+            app:sliderIndicatorSelectedColor="@color/redDigi"
+            app:sliderIndicatorUnselectedColor="#FFF" />
+
+
+        <TextView
+            android:id="@+id/productName_TextView_Detail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginRight="8dp"
+            android:text="@{productDetailsViewModel.product.name}"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageSlider" />
+
+        <LinearLayout
+            android:id="@+id/activityProductDetails_rl_config_refresh"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="right"
+            android:orientation="vertical"
+            android:paddingLeft="16.0dip"
+            android:paddingRight="16.0dip"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/productName_TextView_Detail">
+
+            <TextView
+                android:id="@+id/activityProductDetails_tv_warranty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_warranty_24dp"
+                android:drawablePadding="10.0dip"
+                android:gravity="right"
+                android:padding="7.0dip"
+                android:text="گارانتی اصالت و سلامت فیزیکی کالا"
+                android:textColor="@color/digikala_black_dark_54"
+                android:textSize="13.0sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1.0dip"
+                android:layout_marginTop="5.0dip"
+                android:layout_marginBottom="5.0dip"
+                android:background="@color/gray_200" />
+
+            <TextView
+                android:id="@+id/activityProductDetails_tv_sent_from"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:drawableRight="@drawable/ic_local_shipping_grey600_24dp"
+                android:drawablePadding="10.0dip"
+                android:gravity="right"
+                android:padding="7.0dip"
+                android:text="آماده ارسال از انبار دیجی کالا"
+                android:textColor="@color/digikala_black_dark_54"
+                android:textSize="13.0sp"
+                android:textStyle="bold"
+                android:visibility="visible" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1.0dip"
+                android:layout_marginTop="10.0dip"
+                android:layout_marginBottom="10.0dip"
+                android:background="@color/gray_200" />
+
+
+            <LinearLayout
+                android:id="@+id/activityProductDetails_ll_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:orientation="horizontal"
+                android:padding="4.0dip">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:fontFamily="@font/iran_sans"
+                    android:text="تومان"
+                    android:textColor="@color/digikala_green_light"
+                    android:textSize="20.0sp" />
+
+                <TextView
+                    android:id="@+id/productPrice_TextView_Detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/iran_sans"
+                    android:text="@{productDetailsViewModel.product.price}"
+                    android:textColor="@color/digikala_green_light"
+                    android:textSize="20.0sp" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/fragment_product_detail_addToBasket"
+            android:layout_width="match_parent"
+            android:layout_height="48.0dip"
+            android:layout_below="@+id/activityProductDetails_rl_config_refresh"
+            android:layout_margin="20dp"
+            android:background="@color/digikala_green_light"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/activityProductDetails_rl_config_refresh"
+            tools:layout_editor_absoluteX="20dp">
+
+            <LinearLayout
+                android:id="@+id/activityProductDetails_rl_addToCartBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="visible">
+                <TextView
+                    android:id="@+id/activityProductDetails_tv_addToCartName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:text="افزودن به سبد خرید"
+                    android:textColor="@color/white_pure"
+                    android:textSize="17.0sp" />
+                <View
+                    android:id="@+id/activityProductDetails_v_addToCartDivider"
+                    android:layout_width="16.0dip"
+                    android:layout_height="24.0dip"
+                    android:layout_gravity="center_vertical"
+                    android:visibility="visible" />
+
+                <ImageView
+                    android:id="@+id/activityProductDetails_iv_basketIcon"
+                    android:layout_width="28.0dip"
+                    android:layout_height="28.0dip"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_toRightOf="@id/activityProductDetails_tv_addToCartName"
+                    android:src="@drawable/ic_add_shopping_cart_2_white_24dp"
+                    android:textSize="19.0sp"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_product_detail_addToBasket">
+
+            <TextView
+                android:id="@+id/productDescription_TextView_Detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_marginTop="16dp"
+                android:text="@{Html.fromHtml(productDetailsViewModel.product.description)}"
+                android:textDirection="rtl" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

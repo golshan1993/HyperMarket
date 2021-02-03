@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.fragment.SortDialogFragment">
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sort_radiogroup"
+        android:padding="16dp">
+
+        <RadioButton
+            android:id="@+id/sort_dialog_most_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/digikala_green_light"
+            android:gravity="right|center_vertical"
+            android:layoutDirection="rtl"
+            android:paddingRight="8dp"
+            android:text="پر بازدیدترین"
+            android:textSize="11dp" />
+
+        <RadioButton
+            android:id="@+id/sort_dialog_best_seller"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/digikala_green_light"
+            android:gravity="right|center_vertical"
+            android:layoutDirection="rtl"
+            android:paddingRight="8dp"
+            android:text="@string/best_sale"
+            android:textSize="11dp" />
+
+        <RadioButton
+            android:id="@+id/sort_dialog_price_ascending"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/digikala_green_light"
+            android:gravity="right|center_vertical"
+            android:layoutDirection="rtl"
+            android:paddingRight="8dp"
+            android:text="قیمت از زیاد به کم"
+            android:textSize="11dp" />
+
+        <RadioButton
+            android:id="@+id/sort_dialog_price_descending"
+            style="@android:style/Widget.CompoundButton.RadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/digikala_green_light"
+            android:gravity="right|center_vertical"
+            android:layoutDirection="rtl"
+            android:paddingRight="8dp"
+            android:text="قیمت از کم به زیاد"
+            android:textSize="11dp" />
+
+        <RadioButton
+            android:id="@+id/sort_dialog_newest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right|center_vertical"
+            android:buttonTint="@color/digikala_green_light"
+            android:layoutDirection="rtl"
+            android:paddingRight="8dp"
+            android:text="جدیدترین"
+            android:textSize="11dp" />
+
+    </RadioGroup>
+    </FrameLayout>
+</layout>

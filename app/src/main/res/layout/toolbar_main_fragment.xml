@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/digikala_red_light"
+        android:layoutDirection="ltr">
+
+        <ImageButton
+            android:layout_centerVertical="true"
+            android:id="@+id/main_toolbar_navigation_imageview"
+            android:layout_width="48.0dip"
+            android:layout_height="48.0dip"
+            android:layout_alignParentEnd="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:layout_margin="4.0dip"
+            android:padding="12.0dip"
+            android:src="@drawable/ic_navigation"
+            android:layout_alignParentRight="true" />
+
+
+        <ImageView
+            android:id="@+id/main_toolbar_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_digikala_white_24dp"
+            android:layout_toLeftOf="@+id/main_toolbar_navigation_imageview" />
+
+        <ImageButton
+            android:layout_centerVertical="true"
+            android:id="@+id/main_toolbar_search_imageView"
+            android:layout_width="48.0dip"
+            android:layout_height="48.0dip"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:layout_marginTop="4.0dip"
+            android:layout_marginBottom="4.0dip"
+            android:src="@drawable/ic_search_white_24dp"
+            android:layout_toRightOf="@id/main_toolbar_basket_imageview" />
+
+        <ImageButton
+            android:id="@+id/main_toolbar_basket_imageview"
+            android:layout_width="48.0dip"
+            android:layout_height="48.0dip"
+            android:layout_marginTop="4.0dip"
+            android:layout_marginBottom="4.0dip"
+            android:padding="12.0dip"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_shopping_cart_white_24dp"
+            android:layout_alignParentLeft="true" />
+
+        <TextView
+            android:id="@+id/main_toolbar_basket_textview"
+            android:layout_width="20.0dip"
+            android:layout_height="20.0dip"
+            android:layout_marginTop ="7.0dip"
+            android:background="@drawable/badge_background"
+            android:gravity="center"
+            android:textColor="#ffef394e"
+            android:textSize="12sp"
+            android:text="5"
+            android:textStyle="bold"
+            android:layout_marginLeft="-26.0dip"
+            android:layout_toRightOf="@id/main_toolbar_basket_imageview" />
+
+    </RelativeLayout>
+
+</layout>

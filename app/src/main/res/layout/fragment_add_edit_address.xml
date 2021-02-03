@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        tools:context=".view.fragment.AddEditAddressFragment">
+
+        <ScrollView
+            android:id="@+id/rc_adrs"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingLeft="16.0dip"
+                    android:paddingTop="16.0dip"
+                    android:paddingRight="16.0dip"
+                    android:paddingBottom="16.0dip">
+
+
+                    <EditText
+                        android:id="@+id/rc_name"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right|center"
+                        android:hint="@string/reciever_name"
+                        android:textColor="@color/digikala_black_light"
+                        android:textColorHint="@color/digikala_adrs_title3"
+                        android:textSize="13.0sp" />
+
+                    <EditText
+                        android:id="@+id/rc_emergency_phone"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="start"
+                        android:gravity="right|center"
+                        android:hint="@string/adrs_emergency_phone"
+                        android:inputType="number"
+                        android:maxLength="11"
+                        android:textColor="@color/digikala_black_light"
+                        android:textColorHint="@color/digikala_adrs_title3"
+                        android:textSize="13.0sp" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20.0dip"
+                        android:orientation="horizontal"
+                        android:weightSum="4.0">
+
+
+                        <EditText
+                            android:id="@+id/rc_phone_code"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="start"
+                            android:gravity="right|center"
+                            android:hint="@string/phone_code"
+                            android:inputType="number"
+                            android:maxLength="3"
+                            android:textColor="@color/digikala_black_light"
+                            android:textColorHint="@color/digikala_adrs_title3"
+                            android:textSize="13.0sp" />
+
+                        <EditText
+                            android:id="@+id/rc_phone"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="start"
+                            android:gravity="right|center"
+                            android:hint="@string/adrs_phone"
+                            android:inputType="number"
+                            android:maxLength="8"
+                            android:textColor="@color/digikala_black_light"
+                            android:textColorHint="@color/digikala_adrs_title3"
+                            android:textSize="13.0sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20.0dip"
+                        android:orientation="horizontal"
+                        android:weightSum="2.0">
+
+
+                        <ProgressBar
+                            android:id="@+id/city_loading"
+                            android:layout_width="24.0dip"
+                            android:layout_height="24.0dip"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="8.0dip"
+                            android:layout_weight="1.0"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/district_nearest_container"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/yellow_problem"
+                        android:padding="8.0dip"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="@string/district_choose_nearest"
+                            android:textSize="12.0sp" />
+                    </RelativeLayout>
+
+                    <EditText
+                        android:id="@+id/rc_postal_code"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="start"
+                        android:gravity="right|center"
+                        android:hint="@string/postal_code"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:textColor="@color/digikala_black_light"
+                        android:textColorHint="@color/digikala_adrs_title3"
+                        android:textSize="13.0sp" />
+
+
+                    <EditText
+                        android:id="@+id/rc_address"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right|center"
+                        android:hint="@string/address_cont"
+                        android:maxLines="3"
+                        android:textColor="@color/digikala_black_light"
+                        android:textColorHint="@color/digikala_adrs_title3"
+                        android:textSize="13.0sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/rc_save_address"
+                    android:layout_width="fill_parent"
+                    android:layout_height="56.0dip"
+                    android:layout_above="@id/activityProductDetails_v_navigationBarBackground"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/digikala_green_light"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/btn_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableLeft="@drawable/ic_chevron_right_white_24dp"
+                        android:drawablePadding="8.0dip"
+                        android:text="@string/info_register"
+                        android:textColor="@color/digikala_white_pure"
+                        android:textSize="17.0sp" />
+
+                    <ProgressBar
+                        android:id="@id/loading"
+                        android:layout_width="48.0dip"
+                        android:layout_height="48.0dip"
+                        android:layout_gravity="center"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <View
+            android:id="@+id/activityProductDetails_v_navigationBarBackground"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/navigationbarMargin"
+            android:layout_alignParentBottom="true"
+            android:background="@color/digikala_black_dark" />
+    </RelativeLayout>
+
+</layout>

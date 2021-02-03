@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home_navigation_menu"
+        android:title="خانه" />
+    <item
+        android:id="@+id/categories_navigation_menu"
+        android:title="لیست دسته بندی محصولات" />
+
+    <item
+        android:id="@+id/bag_navigation_menu"
+        android:title="سبد خرید" />
+
+    <item
+        android:visible="false"
+        android:id="@+id/logut_nav_menu"
+        android:title="خروج"/>
+
+</menu>
