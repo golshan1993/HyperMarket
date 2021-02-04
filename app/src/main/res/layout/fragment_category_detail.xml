@@ -6,7 +6,7 @@
     <data>
         <variable
             name="categoryDetailViewModel"
-            type="com.example.finalproject.viewModel.CategoriesViewModel" />
+            type="com.example.hypermarket.viewModel.CategoriesViewModel" />
     </data>
     <ScrollView
         android:layout_width="match_parent"

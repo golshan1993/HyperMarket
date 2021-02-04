@@ -9,7 +9,7 @@
 
         <variable
             name="productDetailsViewModel"
-            type="com.example.finalproject.viewModel.ProductDetailFragmentViewModel" />
+            type="com.example.hypermarket.viewModel.ProductDetailFragmentViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView

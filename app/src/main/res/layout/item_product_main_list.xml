@@ -7,7 +7,7 @@
     <data>
         <variable
             name="productDetailsViewModel"
-            type="com.example.finalproject.viewModel.ProductDetailFragmentViewModel" />
+            type="com.example.hypermarket.viewModel.ProductDetailFragmentViewModel" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

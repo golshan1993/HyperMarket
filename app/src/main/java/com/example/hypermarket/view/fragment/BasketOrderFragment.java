@@ -15,12 +15,12 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.finalproject.R;
-import com.example.finalproject.adapter.AddressAdapter;
-import com.example.finalproject.adapter.OrderProductAdapter;
-import com.example.finalproject.database.CustomerAddressModel;
-import com.example.finalproject.databinding.FragmentBasketOrderBinding;
-import com.example.finalproject.viewModel.OrderViewModel;
+import com.example.hypermarket.R;
+import com.example.hypermarket.adapter.AddressAdapter;
+import com.example.hypermarket.adapter.OrderProductAdapter;
+import com.example.hypermarket.database.CustomerAddressModel;
+import com.example.hypermarket.databinding.FragmentBasketOrderBinding;
+import com.example.hypermarket.viewModel.OrderViewModel;
 
 /**
  * A simple {@link Fragment} subclass.

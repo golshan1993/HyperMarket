@@ -55,6 +55,7 @@ public class ProductBasketAdapter extends RecyclerView.Adapter<ProductBasketAdap
         return new ProductHolder(binding);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     public void onBindViewHolder(@NonNull ProductHolder holder, int position) {
         CartProduct product = mProducts.get(position);

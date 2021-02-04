@@ -1,11 +1,11 @@
-package com.example.finalproject;
+package com.example.hypermarket;
 
 import android.app.Application;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.os.Build;
 
-import com.example.finalproject.database.RoomDB;
+import com.example.hypermarket.database.RoomDB;
 
 public class MyApplication extends Application {
     private static MyApplication mInstance;

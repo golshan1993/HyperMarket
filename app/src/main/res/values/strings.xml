@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">FinalProject</string>
+    <string name="app_name">HyperMarket</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="Short_review">نقد و بررسی متخصصین دیجی کالا</string>
+    <string name="Short_review">نقد و بررسی متخصصین </string>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_up_description">Navigate up</string>
     <string name="abc_action_menu_overflow_description">More options</string>
@@ -44,7 +44,7 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
-    <string name="about">کليه حقوق اپلیکیشن متعلق به شرکت نوآوران فن آوازه (فروشگاه آنلاین دیجی‌کالا) می‌باشد.</string>
+    <string name="about">کليه حقوق اپلیکیشن متعلق به شرکت دیجی کالا می‌باشد.</string>
     <string name="accept_digikala_rules">با انتخاب این دکمه، موافقت خود را با قوانین و شرایط استفاده از دیجی‌کالا اعلام میکنید</string>
     <string name="acraMessage">خطای پیش آمده به زودی توسط دیجی‌کالا رفع خواهد شد</string>
     <string name="action_retry">تلاش مجدد</string>

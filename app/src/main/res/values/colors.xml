@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#ffef394e</color>
+    <color name="colorPrimary">#0F9D58</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#ffef394e</color>
-    <color name="redDigi">#FF0000</color>
+    <color name="colorAccent">#3ddc84</color>
+    <color name="redDigi">#DB4437</color>
     <color name="white">#FFFFFF</color>
-    <color name="green">#23cf5a</color>
+    <color name="green">#3ddc84</color>
 
     <color name="abc_input_method_navigation_guard">@android:color/black</color>
 

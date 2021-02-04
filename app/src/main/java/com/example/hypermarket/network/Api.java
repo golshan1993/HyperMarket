@@ -1,10 +1,10 @@
 package com.example.hypermarket.network;
 
-import com.example.finalproject.model.Attribute;
-import com.example.finalproject.model.Category;
-import com.example.finalproject.model.Customer;
-import com.example.finalproject.model.Order;
-import com.example.finalproject.model.Product;
+import com.example.hypermarket.model.Attribute;
+import com.example.hypermarket.model.Category;
+import com.example.hypermarket.model.Customer;
+import com.example.hypermarket.model.Order;
+import com.example.hypermarket.model.Product;
 
 import java.util.List;
 
