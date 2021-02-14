@@ -15,7 +15,7 @@
 
 
  * Loading Page : When the user starts the application, before all products are loaded from the API, this page is shown.
- * All Product Page :  The first page that the user confronts, it shows top rated, best sellers and popular products with slider.
+ * All Product Page :  The first page that the customer sees, it shows top rated, best sellers and popular products with slider.
  * Detail Product Page :  It shows details about products name and their description, color and .... The customer is able to add the product to the basket.
  * Category Page :  It shows the products related to the category chosen by customer.
  * Customer Basket Page : It shows all the products chosen by the customer and their price as well as the totall price.
