@@ -1,5 +1,6 @@
 # HyperMarket
 ## Creating a Version of Android Hypermarket.
+### - Using WooCommerce REST API.
 ### - MVVM Architecture
 ### - DataBinding and LiveData
 <br>
